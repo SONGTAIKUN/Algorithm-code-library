@@ -119,7 +119,7 @@ void multiplyMatrices(int** A, int** B, int** result) {
 }
 
 int main() {
-    //auto start = std::chrono::high_resolution_clock::now(); // 记录开始时间
+    auto start = std::chrono::high_resolution_clock::now(); // 记录开始时间
     
     srand(time(0)); // 初始化随机种子
     
@@ -131,26 +131,21 @@ int main() {
         matrixB[i] = new int[SIZE];
         result[i] = new int[SIZE];
     }
-
-    std::cout << typeid(matrixA).name() << std::endl;
-    std::cout << "hh2" << std::endl;
-
-    //std::cout << "hello" << std::endl;
     
-    //generateMatrix(matrixA);
-    //generateMatrix(matrixB);
+    generateMatrix(matrixA);
+    generateMatrix(matrixB);
     
-    //std::cout << "Computing matrix multiplication...\n";
-    //multiplyMatrices(matrixA, matrixB, result);
+    std::cout << "Computing matrix multiplication...\n";
+    multiplyMatrices(matrixA, matrixB, result);
     
-    //std::cout << "Matrix A (first 10x10):" << std::endl;
-    //printMatrix(matrixA);
+    std::cout << "Matrix A (first 10x10):" << std::endl;
+    printMatrix(matrixA);
     
-    //std::cout << "\nMatrix B (first 10x10):" << std::endl;
-    //printMatrix(matrixB);
+    std::cout << "\nMatrix B (first 10x10):" << std::endl;
+    printMatrix(matrixB);
     
-    //std::cout << "\nResult (first 10x10):" << std::endl;
-    //printMatrix(result);
+    std::cout << "\nResult (first 10x10):" << std::endl;
+    printMatrix(result);
     
     for (int i = 0; i < SIZE; i++) {
         delete[] matrixA[i];
@@ -161,9 +156,9 @@ int main() {
     delete[] matrixB;
     delete[] result;
     
-    //auto end = std::chrono::high_resolution_clock::now(); // 记录结束时间
-    //std::chrono::duration<double> duration = end - start;
-    //std::cout << "\nExecution time: " << duration.count() << " seconds" << std::endl;
+    auto end = std::chrono::high_resolution_clock::now(); // 记录结束时间
+    std::chrono::duration<double> duration = end - start;
+    std::cout << "\nExecution time: " << duration.count() << " seconds" << std::endl;
     
     return 0;
 }
